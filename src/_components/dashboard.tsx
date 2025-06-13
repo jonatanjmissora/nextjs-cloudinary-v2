@@ -1,21 +1,20 @@
-import { CloudinaryAsset } from "@/_lib/types"
+"use client"
+
+import { Folder } from "@/_lib/types"
 import FolderStructure from "./folder-structure"
-import { setFoldersFromAssets } from "@/_lib/utils/set-folders"
+import FileExplorer from "./file-explorer"
+import { useState } from "react"
 
-export default function Dashboard({assets}: {assets: CloudinaryAsset[]}) {
+export default function Dashboard({folders}: {folders: Folder[]}) {
+
+    const [selectedFolder, setSelectedFolder] = useState<Folder>(folders[0])
   
-    console.log(assets)
-
     return (
-    <div className="">
+    <div className="flex">
 
-      <FolderStructure folders={setFoldersFromAssets(assets)} />
+      <FolderStructure folders={folders} selectedFolder={selectedFolder} setSelectedFolder={setSelectedFolder}/>
 
-      {
-        assets.map(asset => 
-          <p key={asset.public_id}>{asset.asset_folder} - {asset.display_name}</p>
-        )
-      }
+      <FileExplorer selectedFolder={selectedFolder} />
     </div>
   )
 }
