@@ -80,7 +80,7 @@ export function setFoldersFromAssets(initialAssets: CloudinaryAsset[]): Folder[]
         parentId: null,
         files: sortedFolderArray
             .map((folder) => folder.files).flat()
-            .sort((a, b) => a.lastModified.localeCompare(b.lastModified))
+            .sort((a, b) => b.lastModified.localeCompare(a.lastModified))
       }
     return [allFolders, ...sortedFolderArray]
   }
