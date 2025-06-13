@@ -3,18 +3,16 @@
 import { Folder } from "@/_lib/types"
 import FolderStructure from "./folder-structure"
 import FileExplorer from "./file-explorer"
-import { useState } from "react"
 
-export default function Dashboard({folders}: {folders: Folder[]}) {
-
-    const [selectedFolder, setSelectedFolder] = useState<Folder>(folders[0])
+export default function Dashboard({folders, folder}: {folders: Folder[], folder: Folder}) {
   
     return (
     <div className="flex">
 
-      <FolderStructure folders={folders} selectedFolder={selectedFolder} setSelectedFolder={setSelectedFolder}/>
+      <FolderStructure folders={folders} folder={folder}/>
 
-      <FileExplorer selectedFolder={selectedFolder} />
+      <FileExplorer folder={folder} />
+
     </div>
   )
 }

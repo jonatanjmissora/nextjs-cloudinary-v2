@@ -76,7 +76,7 @@ export function setFoldersFromAssets(initialAssets: CloudinaryAsset[]): Folder[]
     //Agrego la carpeta "Todos", con todas las imagenes y videos
     const allFolders = {
         id: "0",
-        name: "All",
+        name: "Todas",
         parentId: null,
         files: sortedFolderArray
             .map((folder) => folder.files).flat()

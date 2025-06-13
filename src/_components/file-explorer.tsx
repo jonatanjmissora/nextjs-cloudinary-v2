@@ -1,7 +1,7 @@
 import { CustomFile, Folder } from "@/_lib/types"
 import FileCard from "./file-card"
 
-export default function FileExplorer({selectedFolder}: {selectedFolder: Folder}) {
+export default function FileExplorer({folder}: {folder: Folder}) {
 
   const sortedSelectedFiles = (files: CustomFile[]) => {
     return files.sort((a, b) => b.lastModified.localeCompare(a.lastModified))
@@ -10,7 +10,7 @@ export default function FileExplorer({selectedFolder}: {selectedFolder: Folder})
   return (
     <div className="w-3/4 flex flex-wrap gap-2">
         {
-            sortedSelectedFiles(selectedFolder.files).map(file => 
+            sortedSelectedFiles(folder.files).map(file => 
                 <FileCard key={file.id} file={file} />
             )
         }
