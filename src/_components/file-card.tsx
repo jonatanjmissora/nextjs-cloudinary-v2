@@ -1,3 +1,5 @@
+"use client"
+
 import { CustomFile } from "@/_lib/types";
 import { setFileDate, setFileSize } from "@/_lib/utils/file-data";
 import { CldImage } from "next-cloudinary";

@@ -9,7 +9,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ [
   
   const folderName = (await searchParams).folder ?? "Todas"
   
-  const {success, assets, message} = await getAssets()
+  const {success, response, message} = await getAssets()
 
   if(!success) {
     return (
@@ -21,13 +21,13 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ [
     )
   }
 
-  const folders: Folder[] = setFoldersFromAssets(assets)
+  const folders: Folder[] = setFoldersFromAssets(response)
   const folder = folders.find(f => f.name === folderName) || folders[0]
 
   return (
     <div className="">
         
-      <Suspense fallback={<div>LOADING...</div>}>
+      <Suspense fallback={<div>SUSPENSE...</div>}>
         <Dashboard folders={folders} folder={folder}/>
       </Suspense>
 

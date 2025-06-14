@@ -11,11 +11,12 @@ export const getAssets = async () => {
             .execute();
         if(!res){
             console.error("error en getAssets - !res: ")
-            return {success: false, assets: [], message: "Problemas con la API de Cloudinary"}
+            return {success: false, response: [], message: "Problemas con la API de Cloudinary"}
         }
-        return {success: true, assets: res.resources || [], message: "Assets obtenidos correctamente"}
+        // return res.resources || []
+        return {success: true, response: res.resources || [], message: "Assets obtenidos correctamente"}
     } catch (error) {
         console.error("error en getAssets - catch: ", error)
-        return {success: false, assets: [], message: error.message}
+        return {success: false, response: [], message: error.message}
     }
 } 
